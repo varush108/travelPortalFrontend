@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Login</title>
+
+
+</head>
+
+<body>
+    <div class="card text-center mr-5 m-3" style="width: 23rem; height: 30rem;">
+        <div class="card-body">
+            <br>
+            <h4 class="card-title">LOGIN</h4>
+            <hr>
+            <br>
+            <div class="form-signin">
+                <div class="form-group has-feedback">
+                    <i class="fa fa-user icon"></i>
+                    <input type="text" id="inputUsername" class="form-control border-bottom" placeholder="Username" #email (input)="onEmailInput(email.value)" required autofocus>
+                </div>
+                <div class="form-group has-feedback">
+                    <i class="fa fa-key icon"></i>
+                    <input type="password" id="inputPassword" class="form-control border-bottom mr-3" placeholder="Password" #password (input)="onPasswordInput(password.value)" required>
+                    <a id=" forgot " routerLink="/forgot">Forgot?</a>
+                </div>
+                <p *ngIf="errorMessage" style="color:red;">{{ errorMessage }}</p>
+                <br>
+                <button class="btn active mb-5 ml-2 " type="submit " (click)="onUserLogin()">LOGIN</button>
+                <button class="btn active ml-3 mb-5 " type="submit " (click)="onAdminLogin()">LOGIN AS ADMIN</button>
+                <br> Don't have an account?<a class="ml-2 " routerLink="/signup">REGISTER</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+ body {
+     background: url(../bg.jpg);
+     background-repeat: no-repeat;
+     background-size: 1300px 650px;
+     display: flex;
+     justify-content: center;
+     padding-top: 30px;
+     padding-bottom: 40px;
+     padding-right: 60px;
+ }
+ 
+ .card-title {
+     color: rgb(197, 59, 9);
+ }
+ 
+ .form-sign-up {
+     width: 100%;
+     max-width: 330px;
+     padding: 15px;
+     margin: 0 auto;
+ }
+ 
+ .btn {
+     background: linear-gradient(to right, rgb(150, 2, 150) 0%, rgb(53, 3, 53) 100%);
+     border: none;
+     color: white;
+     font-weight: 600;
+     padding: 10px 20px;
+     text-align: center;
+     display: inline-block;
+     cursor: pointer;
+     border-radius: 20px;
+ }
+ 
+ a {
+     color: orangered;
+     font-weight: 600;
+ }
