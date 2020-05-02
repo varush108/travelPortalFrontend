@@ -101,10 +101,9 @@ export class SignupComponent implements OnInit {
 
      this.loginService.registerUser(this.user).subscribe((response) =>{
        if(response.status == 200){
-         console.log(response.body['password']);
         localStorage.setItem("user",JSON.stringify(this.user));
         this.loginService.sendConformationMail(this.user.email,response.body['password']).subscribe((responseData)=>{
-          console.log(responseData);
+          
         })
         this.router.navigate(['/registrationConfirm']);
        } 

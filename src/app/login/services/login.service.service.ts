@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserRegister } from 'src/app/models/userRegister';
 import { stringify } from 'querystring';
+import { user } from 'src/app/models/user.interface';
+import { Admin } from 'src/app/models/admin';
 
 @Injectable()
 export class LoginService {
 
   constructor(private http: HttpClient) {}
   getUserByEmail(email:string) {
-    return this.http.get(`http://localhost:8081/travelApi/v1/userByEmail?email=${email}`); 
+    return this.http.get<user>(`http://localhost:8081/travelApi/v1/userByEmail?email=${email}`); 
   }
 
   getAllBusinessUnits(){
@@ -17,7 +19,7 @@ export class LoginService {
   }
 
   getAdminByEmail(email:string){
-    return this.http.get(`http://localhost:8081/travelApi/v1/adminByEmail?email=${email}`); 
+    return this.http.get<Admin>(`http://localhost:8081/travelApi/v1/adminByEmail?email=${email}`); 
   }
 
   registerUser(user : UserRegister){
