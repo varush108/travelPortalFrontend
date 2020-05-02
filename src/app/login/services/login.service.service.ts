@@ -21,7 +21,7 @@ export class LoginService {
 
   registerUser(user : UserRegister){
 
-    return this.http.post(`http://localhost:8081/travelApi/v1/users`, user)
+    return this.http.post('http://localhost:8081/travelApi/v1/users',user)
 
   }
 

@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
       firstName : this.firstNameControl,
       lastName : this.lastNameControl,
       email : this.emailControl,
-      phone : this.phoneControl,
+      telephone : this.phoneControl,
       title: this.titleControl,
       businessUnit : this.businessUnitControl,
       address: new FormGroup({

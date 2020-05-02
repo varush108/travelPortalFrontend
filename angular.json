@@ -15,9 +15,11 @@
                     "options": {
                         "outputPath": "dist/travelapi",
                         "index": "src/index.html",
+
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
+
                         "aot": true,
                         "assets": [
                             "src/favicon.ico",
@@ -63,6 +65,7 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
                         "browserTarget": "travelapi:build"
+
                     },
                     "configurations": {
                         "production": {
