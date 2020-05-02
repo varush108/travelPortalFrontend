@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserRegister } from 'src/app/models/userRegister';
+import { stringify } from 'querystring';
 
 @Injectable()
 export class LoginService {
@@ -21,8 +22,24 @@ export class LoginService {
 
   registerUser(user : UserRegister){
 
-    return this.http.post('http://localhost:8081/travelApi/v1/users',user)
+    return this.http.post('http://localhost:8081/travelApi/v1/users',user,{observe: 'response'})
 
+  }
+
+  sendConformationMail(username:string,password:string){
+    
+    let subject = "Registration successful"  ; 
+    let text = "<h1> You have successfully registered to Nagarro travel portal</h1>"+
+          "<br> Your credentials are mentioned below. Please do not share it with anyone"+
+          "<br><b>Username </b>: "+username+
+          "<br><b>Password </b>: "+password
+
+    subject = encodeURIComponent(subject); 
+    text = encodeURIComponent(text)
+
+
+    return this.http.get(`http://localhost:8081/travelApi/v1/send-mail?email=${username}&subject=${subject}&text=${text}`); 
+    
   }
 
 

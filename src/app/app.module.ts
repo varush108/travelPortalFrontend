@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Inject } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { LoginService } from './login/services/login.service.service';
 import { HttpClientModule } from '@angular/common/http';
+import {LOCAL_STORAGE, WebStorageService, StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     LoginModule,
-    HttpClientModule
+    HttpClientModule,
+  
   ],
-  providers: [LoginService],
+  providers: [LoginService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+ 
+  constructor() {   }
+
+}

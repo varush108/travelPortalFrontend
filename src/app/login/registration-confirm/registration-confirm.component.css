@@ -1,0 +1,40 @@
+body {
+    background: url(../bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 1300px 650px;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-right: 60px;
+}
+
+a {
+    color: black;
+}
+
+.card-title {
+    color: rgb(197, 59, 9);
+}
+
+.icon {
+    padding: 0px;
+    color: white;
+    min-width: 20px;
+}
+
+h6 {
+    color: purple;
+}
+
+.btn {
+    background: linear-gradient(to right, rgb(150, 2, 150) 0%, rgb(53, 3, 53) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 30px;
+}

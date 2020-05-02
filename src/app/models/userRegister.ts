@@ -8,6 +8,7 @@ export interface UserRegister {
     telephone:string;
     businessUnitId:{
         id:bigint;
+    
     };
     address:address;
     created_on:string;

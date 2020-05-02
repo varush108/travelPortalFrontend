@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Confirmation</title>
+
+</head>
+
+<body>
+    <div class="card text-center ml-5" style="width: 25rem; height: 32rem;">
+        <div class="card-body">
+            <h4 class="card-title">Confirmation</h4>
+            <hr>
+            <h6 class="card-subtitle mt-2">Thank you for registering. The Admin will contact you shortly with username and password</h6>
+            <hr>
+            <p class="card-text mt-3" style="text-align: justify">
+                <b>Name </b>:{{ user.firstName + " "+ user.lastName}}
+                <br> <b>Buisness Unit</b> : {{ user.businessUnitId}}
+                <br> <b>Title</b> :{{ user.title }}
+                <br> <b>E-mail</b> : {{user.email}}
+                <br> <b>Telephone </b>: {{ user.telephone}}
+                <br> <b>Address 1 </b>: {{user.address.address1}}
+                <br> <b>Address 2</b>: {{user.address.address2}}
+                <br> <b>City </b>:{{user.address.city}}
+                <br> <b>State </b>: {{user.address.state}}
+                <br> <b>Zip </b>: {{user.address.zipcode}}
+                <br> <b>Country  </b>: {{user.address.country}}
+                <br>
+            </p>
+            <button class="btn mr-1" style="color: aliceblue;"><i class="fa fa-print icon"></i>PRINT</button>
+            <button class="btn mr-1" style="color: aliceblue;"><i class="fa fa-pencil icon"></i>EDIT</button>
+            <a class="btn" href="" role="button" style="color: aliceblue;"><i class="fa fa-arrow-left icon"></i> Login
+                Page</a>
+        </div>
+    </div>
+</body>
+
+</html>

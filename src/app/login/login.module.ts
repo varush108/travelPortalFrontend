@@ -7,6 +7,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
 import { LoginService } from './services/login.service.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegistrationConfirmComponent } from './registration-confirm/registration-confirm.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignupComponent,
     SigninComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    RegistrationConfirmComponent
   ],
   providers:[
     LoginService,

@@ -4,6 +4,7 @@ import { UserRegister } from 'src/app/models/userRegister';
 import { BusinessUnit } from 'src/app/models/businessUnit';
 import { LoginService } from '../services/login.service.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,8 @@ import { DatePipe } from '@angular/common';
 export class SignupComponent implements OnInit {
  
   constructor(private loginService : LoginService,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private router: Router) { }
 
   businessUnits:BusinessUnit[];
   regForm : FormGroup;
@@ -77,7 +79,7 @@ export class SignupComponent implements OnInit {
         zipcode:this.zipcodeControl
       })
 
-
+ 
     })
   }
 
@@ -98,15 +100,25 @@ export class SignupComponent implements OnInit {
      this.user.created_on=this.created_on;
 
      this.loginService.registerUser(this.user).subscribe((response) =>{
-       console.log(response);
+       if(response.status == 200){
+         console.log(response.body['password']);
+        localStorage.setItem("user",JSON.stringify(this.user));
+        this.loginService.sendConformationMail(this.user.email,response.body['password']).subscribe((responseData)=>{
+          console.log(responseData);
+        })
+        this.router.navigate(['/registrationConfirm']);
+       } 
+       else if(response.status==500){ 
+         alert("Server Error occured");
+       }
+       else if(response.status==400 ){
+         alert("Error in form. Please check")
+       }
      })
     }
     else{
       this.errorMessge="Please Complete all the validations to continue to register"
       this.regForm.markAllAsTouched();
-      
-    
-    
     }
   }
 
