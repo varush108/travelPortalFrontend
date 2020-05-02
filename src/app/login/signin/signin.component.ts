@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service.service';
 import { user } from 'src/app/models/user.interface';
 import { Admin } from 'src/app/models/admin';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -24,8 +26,9 @@ export class SigninComponent {
     this.password=password; 
   }
   constructor(
-    private loginservice: LoginService
-  ) { }
+    private loginservice: LoginService,
+    private router:Router
+  ) { } 
 
  
 
@@ -41,13 +44,13 @@ export class SigninComponent {
     this.loginservice.getUserByEmail(email)
     .subscribe((user : user) => {
       if(user!=null){
-        console.log(user);
+      
         if(this.password===user.password)
         {
           localStorage.setItem("user",JSON.stringify(user));
 
           this.errorMessage="";
-          alert("login successful")
+          this.router.navigate(['/mytickets']);
         }
         else{
           this.errorMessage="Password not correct";

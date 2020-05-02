@@ -44,5 +44,21 @@ export class LoginService {
     
   }
 
+  sendForgotPasswordMail(username:string,password:string){
+    
+    let subject = "Forgot Password request on Nagarro Travel"  ; 
+    let text = "<h1> You have requested for credentials to Nagarro travel portal</h1>"+
+          "<br> Your credentials are mentioned below. Please do not share it with anyone"+
+          "<br><b>Username </b>: "+username+
+          "<br><b>Password </b>: "+password
+
+    subject = encodeURIComponent(subject); 
+    text = encodeURIComponent(text)
+
+
+    return this.http.get(`http://localhost:8081/travelApi/v1/send-mail?email=${username}&subject=${subject}&text=${text}`); 
+    
+  }
+
 
 }

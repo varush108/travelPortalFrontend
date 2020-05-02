@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Home page</title>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-custom-1">
+        <a class="navbar-brand" href="#">
+            <img src="..\..\..\assets\images\ngr.jpg" width="150" height="60" class="d-inline-block rounded align-top mx-3" alt="">
+            <span class="toolbar-heading"> Travel Portal</span>
+        </a>
+        <button class="btn btn-outline-light my-2 my-sm-0" id="submit" type="submit" (click)="signOut()">SIGN OUT</button>
+    </nav>
+    <div class="container-fluid p-0">
+
+        <!-- Bootstrap row -->
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+
+            <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+                <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+                <!-- Bootstrap List Group -->
+                <ul class="list-group">
+                    <!-- Separator with title -->
+                    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                        <small>MAIN MENU</small>
+                    </li>
+                    <!-- /END Separator -->
+                    <!-- Menu with submenu -->
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-dashboard fa-fw mr-3"></span>
+                            <span class="menu-collapsed">Dashboard</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-tasks fa-fw mr-3"></span>
+                            <span class="menu-collapsed">My Tickets</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <a href="#" class="bg-dark list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-plus fa-fw mr-3"></span>
+                            <span class="menu-collapsed">Add new ticket</span>
+                        </div>
+                    </a>
+                    <!-- Separator without title -->
+                    <li class="list-group-item sidebar-separator menu-collapsed"></li>
+                    <!-- /END Separator -->
+                    <a href="#" class="bg-dark list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-question fa-fw mr-3"></span>
+                            <span class="menu-collapsed">Help</span>
+                        </div>
+                    </a>
+
+                </ul>
+                <!-- List Group END-->
+            </div>
+            <!-- sidebar-container END -->
+
+            <!-- MAIN -->
+            <div class="col-md-9">
+                <br>
+                <div class="alert alert-danger " role="alert ">
+                    Please take precaution during covid 19. Enteryour travel country to know status of covid19 in that country
+                </div>
+                <button (click)="renderChart() " class="btn btn-primary " [disabled]="disabled ">Get Information</button> <br>
+                <br>
+
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+            </div>
+
+
+            <!-- Main Col END -->
+
+        </div>
+        <!-- body-row END -->
+
+    </div>
+    <!-- container -->
+</body>
+
+</html>
