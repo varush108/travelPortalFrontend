@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Ticket</title>
+
+</head>
+
+<body>
+    <app-nav></app-nav>
+    <div class="container-fluid p-0">
+
+        <!-- Bootstrap row -->
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+            <app-side></app-side>
+            <!-- MAIN -->
+            <div class="col">
+                <div class="card  mx-auto mt-2 text-center" style="max-width: 45rem; min-height: 43rem; border-color: black;">
+                    <div class="card-body">
+                        <form [formGroup]="regForm" validate (ngSubmit)="onFormSubmit()">
+                            <h4 class="card-title">Create New Ticket</h4>
+                            <div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        Request Type:
+                                        <select id="travelrequest" class="form-control" formControlName="type" [ngClass]="getControlValidationClasses(typeControl)">
+                                          <option *ngFor="let type of ticketTypes" [value]=type.id>{{type.name}}</option>
+                                           
+                                        </select>
+                                    </div>
+                                </div>
+                                <div formGroupName="ticketDetails">
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-12">
+                                            Priority:
+                                            <select id="priority" class="form-control" formControlName="priority" [ngClass]="getControlValidationClasses(priorityControl)">
+                                            
+                                            <option value ="Normal"selected>Normal</option>
+                                            <option value ="Urgent">Urgent</option>
+                                            <option value="Immediate">Immediate </option>
+                                        </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            Travel City:
+                                            <select id="travelcity" class="form-control" formControlName="travelcity" [ngClass]="getControlValidationClasses(travelcityControl)">
+                                            <!-- <option selected>Request </option> -->
+                                            <option value ="1" selected>Chikago</option>
+                                            <option value ="1">Delhi</option>
+                                            <option value ="1">Mumbai </option>
+                                        </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            From Location:
+                                            <select id="fromlocation" class="form-control" formControlName="fromlocation" [ngClass]="getControlValidationClasses(fromlocationControl)">
+                                            <option selected value ="1">Delhi</option>
+                                            <option value ="1">Mumbai</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            Travel Start Date:
+                                            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+                                                <input placeholder="Select date" type="date" id="startdate" class="form-control" formControlName="startdate" [ngClass]="getControlValidationClasses(startdateControl)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            Travel End Date:
+                                            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker"></div>
+                                            <input placeholder="Select date" type="date" id="enddate" class="form-control" formControlName="enddate" [ngClass]="getControlValidationClasses(enddateControl)">
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            Passport No:
+                                            <input type="text" class="form-control" id="passport" value="hcbdjhcb" placeholder="Passport No." formControlName="passport" [ngClass]="getControlValidationClasses(passportControl)">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            Expected Duration of Travel:
+                                            <input type="text" class="form-control" id="duration" value="hbdj" placeholder="Expected Duration" formControlName="duration" [ngClass]="getControlValidationClasses(durationControl)">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        Expense Borne: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="custom-control custom-radio custom-control-inline col-md-3 ">
+                                            <input type="radio" id="customRadioInline1" value="dvfvf" name="expenseborne" class="custom-control-input" formControlName="expenseborne" [ngClass]="getControlValidationClasses(expenseborneControl)">
+                                            <label class="custom-control-label" for="customRadioInline1">Nagarro</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline col-md-3">
+                                            <input type="radio" id="customRadioInline2" value="mmd" name="expenseborne" class="custom-control-input" formControlName="expenseborne" [ngClass]="getControlValidationClasses(expenseborneControl)">
+                                            <label class="custom-control-label" for="customRadioInline2">Client</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            Travel Approver Name:
+                                            <input type="text" class="form-control" id="approver" placeholder="Approver Name" formControlName="approver" [ngClass]="getControlValidationClasses(approverControl)">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            Project Name:
+                                            <input type="text" class="form-control" id="project" placeholder="Project Name" formControlName="projectname" [ngClass]="getControlValidationClasses(projectnameControl)">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            Upper bound on allowed limit? If Yes,Please specify:
+                                            <input type="text" class="form-control" id="limit" placeholder="Plaese mention if any..." formControlName="upperbound" [ngClass]="getControlValidationClasses(upperboundControl)">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            Any additional details:
+                                            <input type="text" class="form-control" id="details" placeholder="If any extra details..." formControlName="details" [ngClass]="getControlValidationClasses(detailsControl)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4"></div>
+                                <div class="form-group col-md-4">
+                                    <button class="btn active mx-auto" type="submit" id="card-button">SUBMIT</button>
+                                </div>
+                                <div class="form-group col-md-4"></div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- Main Col END -->
+
+        </div>
+        <!-- body-row END -->
+
+
+    </div>
+    <!-- container -->
+
+</body>
+
+</html>

@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketconfirmComponent } from './ticketconfirm/ticketconfirm.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
 
 
@@ -37,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddNewTicketComponent,
     DashboardComponent,
     TicketDetailsComponent,
-    TicketconfirmComponent
+    TicketconfirmComponent,
+    EditTicketComponent
       
   ],
   providers:[

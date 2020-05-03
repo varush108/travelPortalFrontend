@@ -39,4 +39,8 @@ export class UserService {
   saveTicket(ticket){
     return this.http.post(`http://localhost:8081/travelApi/v1/tickets`,ticket,{observe: 'response'});
   }
+
+  saveTicketDetails(ticket){
+    return this.http.post(`http://localhost:8081/travelApi/v1/ticketDetails`,ticket,{observe: 'response'});
+  }
 }

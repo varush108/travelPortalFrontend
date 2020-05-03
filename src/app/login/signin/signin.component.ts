@@ -4,6 +4,7 @@ import { user } from 'src/app/models/user.interface';
 import { Admin } from 'src/app/models/admin';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { ticketDetails } from 'src/app/models/ticketDetails.interface';
 
 @Component({
   selector: 'app-signin',
@@ -47,6 +48,21 @@ export class SigninComponent {
       
         if(this.password===user.password)
         {
+          user.tickets.forEach((ticket)=>{
+            ticket.ticketDetails.sort((a:ticketDetails,b:ticketDetails):number=>{
+              if(a.id>b.id){
+                return -1
+              }
+              if(a.id<b.id){
+                return 1
+              }
+              else{
+                return 0;
+              }
+            })
+
+          })
+          console.log(user)
           localStorage.setItem("user",JSON.stringify(user));
 
           this.errorMessage="";
@@ -68,6 +84,7 @@ export class SigninComponent {
         console.log(user);
         if(this.password===user.user_id.password)
         {
+          
           localStorage.setItem("user",JSON.stringify(user.user_id));
 
           this.errorMessage="";

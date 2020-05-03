@@ -1,16 +1,12 @@
 import { ticketDetails } from './ticketDetails.interface';
+import { details } from './details.interface';
 
 export interface NewTicket {
-    
-        ticket:{
-          user:{
-            id:BigInteger ;
-          },
-          type:{
-            id:bigint
-    
-          }
-        },
-        ticketDetails:ticketDetails
+        id:BigInteger,
+        type:{
+          id:number,
+          name:string
+        }
+        details:details
       
 }

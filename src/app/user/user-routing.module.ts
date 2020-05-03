@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddNewTicketComponent } from './add-new-ticket/add-new-ticket.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketconfirmComponent } from './ticketconfirm/ticketconfirm.component';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
 const routes: Routes = [
   { path: 'mytickets', component: UserTicketListComponent },
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path :'dashboard',component:DashboardComponent},
   { path : 'new',component:AddNewTicketComponent},
   { path : 'details', component : TicketDetailsComponent},
-  { path : 'ticketconfirm/:details', component : TicketconfirmComponent}
+  { path : 'ticketconfirm/:details', component : TicketconfirmComponent},
+  { path : 'editTicket/:details', component : EditTicketComponent}
+
 ];
  
 @NgModule({
