@@ -1,0 +1,43 @@
+<div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+    <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+    <!-- Bootstrap List Group -->
+    <ul class="list-group">
+        <!-- Separator with title -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <small>MAIN MENU</small>
+        </li>
+        <!-- /END Separator -->
+        <!-- Menu with submenu -->
+        <a href="/dashboard" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-dashboard fa-fw mr-3"></span>
+                <span class="menu-collapsed">Dashboard</span>
+                <span class="submenu-icon ml-auto"></span>
+            </div>
+        </a>
+        <a href="/mytickets"  data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-tasks fa-fw mr-3"></span>
+                <span class="menu-collapsed">My Tickets</span>
+                <span class="submenu-icon ml-auto"></span>
+            </div>
+        </a>
+        <a href="/new" class="bg-dark list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-plus fa-fw mr-3"></span>
+                <span class="menu-collapsed">Add new ticket</span>
+            </div>
+        </a>
+        <!-- Separator without title -->
+        <li class="list-group-item sidebar-separator menu-collapsed"></li>
+        <!-- /END Separator -->
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-start align-items-center">
+                <span class="fa fa-question fa-fw mr-3"></span>
+                <span class="menu-collapsed">Help</span>
+            </div>
+        </a>
+
+    </ul>
+    <!-- List Group END-->
+</div>

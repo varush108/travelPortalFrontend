@@ -72,13 +72,26 @@
             <!-- MAIN -->
             <div class="col-md-9">
                 <br>
-                <div class="alert alert-danger " role="alert ">
-                    Please take precaution during covid 19. Enteryour travel country to know status of covid19 in that country
+                <div class="col">
+                    <div class="alert alert-danger " role="alert ">
+                        <i class="fa fa-exclamation-triangle"></i> Please take precaution during covid 19. Enter your travel country to know status of covid19 in that country
+                    </div>
                 </div>
-                <button (click)="renderChart() " class="btn btn-primary " [disabled]="disabled ">Get Information</button> <br>
-                <br>
 
-                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                <div class="col">
+                    <div class="form-inline">
+                        <select class="form-control col-md-9 mb-2 mr-sm-4" #country (change)="updateSelectedCountry(country.options[country.options.selectedIndex].text,country.value)">
+                            <option selected disabled>Select Country</option>
+                            <option *ngFor="let country of countries" [value]=country.Slug>{{ country.Country}}</option>
+                        </select>
+
+                        <button (click)="renderChart() " class="btn btn-primary mb-2" [disabled]="disabled || countryName==undefined || countryName==='Select Country'">Get Information</button> <br>
+                        <br>
+                    </div>
+
+                </div>
+
+                <div id="chartContainer" style="height: 370px; width: 100%; "></div>
 
             </div>
 

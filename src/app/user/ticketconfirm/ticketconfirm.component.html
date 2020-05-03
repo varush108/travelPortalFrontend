@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Confirmation</title>
+    <link rel="stylesheet" type="text/css" href="ticketconfirm.component.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <app-nav></app-nav>
+    <div class="container-fluid p-0">
+
+        <!-- Bootstrap row -->
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+
+            <app-side></app-side>
+            <!-- MAIN -->
+            <div class="col">
+                <div class="card text-center mx-auto mt-3" style="width: 32rem; height: 31rem; font-size: 21px; border-color: black;">
+                    <div class="card-body">
+                        <h4 class="card-title">Ticket Request Confirmation</h4>
+                        <hr>
+                        <p class="card-text mt-3">
+                            Status : Submitted
+                            <br> Request Type :
+                            <br> Priority : {{ details?.priority }}
+                            <br> Travel City : {{ details?.tolocation }}
+                            <br> From Location : {{ details?.fromlocation }}
+                            <br> Travel Start Date : {{ details?.startdate }}
+                            <br> Travel End Date : {{ details?.enddate }}
+                            <br> Project Name : {{ details?.projectname }}
+                            <br> Passport Number : {{ details?.passport }}
+                            <br> Expense Borne : {{ details?.expenseborne }}
+                            <br> Travel Approver Name : {{ details?.approver }}
+                            <br> Expected Duration of Travel : {{ details?.duration }}
+                            <br>
+                        </p>
+                        <button class="btn mr-1" id="card-button"><i class="fa fa-print icon"></i>PRINT</button>
+                        <button class="btn mr-1" id="card-button"><i class="fa fa-pencil icon"></i>EDIT</button>
+                        <a class="btn" href="\dashboard" role="button" id="card-button"><i class="fa fa-arrow-left icon"></i> Home
+                        Page</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Col END -->
+
+        </div>
+        <!-- body-row END -->
+
+
+    </div>
+    <!-- container -->
+
+</body>
+
+</html>

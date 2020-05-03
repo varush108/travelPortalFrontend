@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+    h3 {
+        color: orangered;
+    }
+ 
+.card-title {
+    color : rgb(197, 59, 9);
+}
+.icon {
+    padding: 0px;
+    color: white;
+    min-width: 20px;
+}
+h6 {
+    color : purple;
+}
+#card-button {
+    background : linear-gradient(to right,rgb(150, 2, 150) 0%, rgb(53, 3, 53) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+
+

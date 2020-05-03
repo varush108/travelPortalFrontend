@@ -3,14 +3,16 @@ export interface details{
 
     status : string;
     priority : string;
-    travelApprover : string;
-    from : string;
-    to : string;
+    approver : string;
+    fromlocation : string;
+    tolocation : string;
+    startdate : string;
+    enddate : string;
     duration : string;
-    upperBound :string;
-    expenseBorne : string;
-    passport_no : string;
-    project_name: string;
-    additional_detail : string;
+    upperbound :string;
+    expenseborne : string;
+    passport : string;
+    projectname: string;
+    adddetail : string;
     
 }

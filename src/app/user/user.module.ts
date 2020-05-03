@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavbarModule } from './navbar/navbar.module';
+import { SidebarModule } from './sidebar/sidebar.module';
 
 import { UserService } from './services/user.service';
 
@@ -9,6 +11,9 @@ import { UserTicketListComponent } from './user-ticket-list/user-ticket-list.com
 import { UserRoutingModule } from './user-routing.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
+import { TicketconfirmComponent } from './ticketconfirm/ticketconfirm.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +22,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     CommonModule,
     UserRoutingModule,
-    NgxPaginationModule
+    NavbarModule,
+    SidebarModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   exports:[
     UserComponent
@@ -27,9 +35,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UserComponent,
     UserTicketListComponent,
     AddNewTicketComponent,
-    DashboardComponent
-  
-    
+    DashboardComponent,
+    TicketDetailsComponent,
+    TicketconfirmComponent
+      
   ],
   providers:[
     UserService
