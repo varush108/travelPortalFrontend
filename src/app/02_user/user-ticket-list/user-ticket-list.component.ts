@@ -31,8 +31,5 @@ export class UserTicketListComponent implements OnInit{
    getDetails(id) {
       this.router.navigateByUrl('/details');
    }
- 
-  signOut() {
-    this.router.navigateByUrl('/signin');
-  }
+
 }

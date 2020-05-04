@@ -6,6 +6,8 @@ import { DatePipe } from '@angular/common';
 import { ticketDetails } from 'src/app/models/ticketDetails.interface';
 import { user } from 'src/app/models/user.interface';
 import { NewTicket } from 'src/app/models/newTicket';
+import { SessionService } from 'src/app/services/session.service';
+import { LoginService } from 'src/app/01_login/services/login.service.service';
 
 @Component({
   selector: 'app-add-new-ticket',
@@ -20,10 +22,13 @@ export class AddNewTicketComponent {
   user:user;
   ticketTypes:{id:BigInteger,name:string}[];
  
+  countryInfo: any[] = [];
 
   constructor(
     private service :UserService,
-    private router: Router) { }
+    private router: Router,
+    private sessionService :SessionService,
+    private loginService:LoginService) { }
   
   typeControl:FormControl;
   priorityControl:FormControl;
@@ -41,6 +46,8 @@ export class AddNewTicketComponent {
 
   ngOnInit() {
 
+    this.getCountries();
+    
     this.service.getTicketTypes().subscribe((response)=>{
       this.ticketTypes=response;
     })
@@ -117,7 +124,9 @@ export class AddNewTicketComponent {
           details:ticket.ticketDetails.details
         } 
         response.body['id']
-         this.router.navigate(['/ticketconfirm',JSON.stringify(ticket1)])
+
+        this.sessionService.updateSessionUserDetails();
+        this.router.navigate(['/ticketconfirm',JSON.stringify(ticket1)])
         
        }else{
          alert('server error occured');
@@ -130,7 +139,15 @@ export class AddNewTicketComponent {
     }
   }
 
-  signOut() {
-    this.router.navigateByUrl('/signin');
+  getCountries(){
+    this.loginService.allCountries().
+    subscribe(
+      data2 => {
+        this.countryInfo=data2.Countries;
+        //console.log('Data:', this.countryInfo);
+      },
+      err => console.log(err),
+      () => console.log('complete')
+    )
   }
 }

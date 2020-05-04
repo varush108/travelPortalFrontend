@@ -15,7 +15,7 @@ export class RegistrationConfirmComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem('userRegister'));
   }
 
 }

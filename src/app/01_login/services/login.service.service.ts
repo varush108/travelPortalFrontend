@@ -4,11 +4,19 @@ import { UserRegister } from 'src/app/models/userRegister';
 import { stringify } from 'querystring';
 import { user } from 'src/app/models/user.interface';
 import { Admin } from 'src/app/models/admin';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http: HttpClient) {}
+  url :string = "https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json";
+
+  constructor(private http:HttpClient) { }
+
+  allCountries(): Observable<any>{
+    return this.http.get(this.url);
+  }
+  
   getUserByEmail(email:string) {
     return this.http.get<user>(`http://localhost:8081/travelApi/v1/userByEmail?email=${email}`); 
   }

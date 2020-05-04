@@ -10,8 +10,9 @@ export class NavbarComponent{
   constructor(
     private router : Router
   ){}
-  
+   
   signOut() {
+    localStorage.removeItem('user');
     this.router.navigateByUrl('/signin');
   }
 }

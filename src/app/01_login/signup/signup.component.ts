@@ -22,6 +22,11 @@ export class SignupComponent implements OnInit {
   user : UserRegister;
   todayDate:Date;
   created_on:string
+  
+
+  stateInfo: any[] = [];
+  countryInfo: any[] = [];
+  cityInfo: any[] = [];
 
 
   errorMessge:string;
@@ -43,6 +48,7 @@ export class SignupComponent implements OnInit {
  
 
   ngOnInit() {
+    this.getCountries();
 
     this.loginService.getAllBusinessUnits().subscribe((businessUnits: BusinessUnit[]) => {
       this.businessUnits = businessUnits;
@@ -98,10 +104,12 @@ export class SignupComponent implements OnInit {
      this.todayDate = new Date();
      this.created_on = this.datePipe.transform(this.todayDate, 'yyyy-MM-dd');
      this.user.created_on=this.created_on;
-
+      this.user.address.country = this.countryInfo[this.regForm.get('address').get('country').value]['CountryName'];
+      this.user.address.state = this.stateInfo[this.regForm.get('address').get('state').value]['StateName'];
+      this.user.address.city = this.cityInfo[this.regForm.get('address').get('city').value];
      this.loginService.registerUser(this.user).subscribe((response) =>{
        if(response.status == 200){
-        localStorage.setItem("user",JSON.stringify(this.user));
+        localStorage.setItem("userRegister",JSON.stringify(this.user));
         this.loginService.sendConformationMail(this.user.email,response.body['password']).subscribe((responseData)=>{
           
         })
@@ -119,6 +127,31 @@ export class SignupComponent implements OnInit {
       this.errorMessge="Please Complete all the validations to continue to register"
       this.regForm.markAllAsTouched();
     }
+  }
+
+
+
+  getCountries(){
+    this.loginService.allCountries().
+    subscribe(
+      data2 => {
+        this.countryInfo=data2.Countries;
+        //console.log('Data:', this.countryInfo);
+      },
+      err => console.log(err),
+      () => console.log('complete')
+    )
+  }
+
+  onChangeCountry(countryValue) {
+    this.stateInfo=this.countryInfo[countryValue].States;
+    this.cityInfo=this.stateInfo[0].Cities;
+    console.log(this.cityInfo);
+  }
+
+  onChangeState(stateValue) {
+    this.cityInfo=this.stateInfo[stateValue].Cities;
+    //console.log(this.cityInfo);
   }
 
 
