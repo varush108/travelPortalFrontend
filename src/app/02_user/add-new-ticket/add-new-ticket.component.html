@@ -94,11 +94,11 @@
                                     <div class="form-row">
                                         Expense Borne: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <div class="custom-control custom-radio custom-control-inline col-md-3 ">
-                                            <input type="radio" id="customRadioInline1" value="dvfvf" name="expenseborne" class="custom-control-input" formControlName="expenseborne" [ngClass]="getControlValidationClasses(expenseborneControl)">
+                                            <input type="radio" id="customRadioInline1" value="Nagarro" name="expenseborne" class="custom-control-input" formControlName="expenseborne" [ngClass]="getControlValidationClasses(expenseborneControl)">
                                             <label class="custom-control-label" for="customRadioInline1">Nagarro</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline col-md-3">
-                                            <input type="radio" id="customRadioInline2" value="mmd" name="expenseborne" class="custom-control-input" formControlName="expenseborne" [ngClass]="getControlValidationClasses(expenseborneControl)">
+                                            <input type="radio" id="customRadioInline2" value="Client" name="expenseborne" class="custom-control-input" formControlName="expenseborne" [ngClass]="getControlValidationClasses(expenseborneControl)">
                                             <label class="custom-control-label" for="customRadioInline2">Client</label>
                                         </div>
                                     </div>
@@ -127,6 +127,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <p style="color:red;" class="mb-2"> {{ errorMessage}}</p>
 
                             <div class="form-row">
                                 <div class="form-group col-md-4"></div>

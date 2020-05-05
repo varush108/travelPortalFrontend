@@ -9,6 +9,7 @@ import { UserModule } from './02_user/user.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuardLoggedInService } from './services/AuthGuardLoggedIn.service';
 import { AuthGuardService } from './services/AuthGuard.service';
+import { AdminModule } from './03_admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthGuardService } from './services/AuthGuard.service';
     BrowserModule,
     LoginModule,
     HttpClientModule,
-    UserModule
+    UserModule,
+    AdminModule
   ], 
   providers: [LoginService,
     AuthGuardLoggedInService,

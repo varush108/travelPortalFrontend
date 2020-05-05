@@ -135,6 +135,8 @@ export class AddNewTicketComponent {
       
     }
     else{
+      this.errorMessage="Please Complete all the validations to continue to register"
+      this.regForm.markAllAsTouched();
 
     }
   }

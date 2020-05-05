@@ -7,6 +7,7 @@ import { ticketDetails } from 'src/app/models/ticketDetails.interface';
 import { user } from 'src/app/models/user.interface';
 import { NewTicket } from 'src/app/models/newTicket';
 import { details } from 'src/app/models/details.interface';
+import { LoginService } from 'src/app/01_login/services/login.service.service';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -21,13 +22,18 @@ export class EditTicketComponent implements OnInit {
   ticketTypes:{id:BigInteger,name:string}[];
   details:details;
   ticket:NewTicket;
+
+  
+  countryInfo: any[] = [];
+
  
  
 
   constructor(
     private service :UserService,
     private router: Router,
-    private routeActivate : ActivatedRoute) { }
+    private routeActivate : ActivatedRoute,
+    private loginService:LoginService,) { }
   
   typeControl:FormControl;
   priorityControl:FormControl;
@@ -45,6 +51,8 @@ export class EditTicketComponent implements OnInit {
 
   ngOnInit() {
 
+    this.getCountries();
+
     this.service.getTicketTypes().subscribe((response)=>{
       this.ticketTypes=response;
     })
@@ -59,7 +67,7 @@ export class EditTicketComponent implements OnInit {
 
     this.typeControl=new FormControl(this.ticket.type.id, [Validators.required]);
     this.priorityControl=new FormControl(this.details.priority, [Validators.required]);
-    this.travelcityControl=new FormControl(this.details.tolocation, [Validators.required]);
+    this.travelcityControl=new FormControl(this.details.travelcity, [Validators.required]);
     this.fromlocationControl=new FormControl(this.details.fromlocation, [Validators.required]);
     this.startdateControl=new FormControl(this.details.startdate, [Validators.required]);
     this.enddateControl=new FormControl(this.details.enddate, [Validators.required]);
@@ -134,7 +142,17 @@ export class EditTicketComponent implements OnInit {
     }
   }
 
-
+  getCountries(){
+    this.loginService.allCountries().
+    subscribe(
+      data2 => {
+        this.countryInfo=data2.Countries;
+        //console.log('Data:', this.countryInfo);
+      },
+      err => console.log(err),
+      () => console.log('complete')
+    )
+  }
 
   signOut() {
     this.router.navigateByUrl('/signin');

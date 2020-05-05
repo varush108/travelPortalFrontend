@@ -8,12 +8,16 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getTickets(id : string) {
-    return this.http.get(`http://localhost:8081/travelApi/v1/users/${id}`);
+  getTickets() {
+    return this.http.get(`http://localhost:8081/travelApi/v1/tickets`);
   }
 
   getTicketById(id: string) {
     return this.http.get(`http://localhost:8081/travelApi/v1/tickets/${id}`);
+  }
+
+  getTicketTypeById(id: number|string) {
+    return this.http.get<{id:number,name:string,templateId:number}>(`http://localhost:8081/travelApi/v1/ticketType/${id}`);
   }
 
   getTicketTypes(){

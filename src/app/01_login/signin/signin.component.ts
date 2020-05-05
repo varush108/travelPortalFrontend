@@ -80,14 +80,14 @@ export class SigninComponent {
           localStorage.setItem("user",JSON.stringify(user.user_id));
 
           this.errorMessage="";
-          alert("login successful")
+          this.router.navigateByUrl('/ticketlist');
         } 
         else{
           this.errorMessage="Password not correct";
         }
       }else{
         this.errorMessage="Username not correct";
-      }
+      } 
     });
   }
 

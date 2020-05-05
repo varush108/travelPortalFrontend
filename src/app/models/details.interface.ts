@@ -1,11 +1,15 @@
-
+export enum Priority {
+    'IMMEDIATE' = 1,
+    'URGENT' = 2,
+    'NORMAL' = 3
+}
 export interface details{
 
     status : string;
     priority : string;
     approver : string;
     fromlocation : string;
-    tolocation : string;
+    travelcity : string;
     startdate : string;
     enddate : string;
     duration : string;

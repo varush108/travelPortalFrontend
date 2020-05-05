@@ -28,12 +28,12 @@
                         <hr>
                         <p class="card-text mt-3">
                             Status : Submitted
-                            <br> Request Type :
+                            <br> Request Type :{{ ticket.type.name }}
                             <br> Priority : {{ details?.priority }}
-                            <br> Travel City : {{ details?.tolocation }}
+                            <br> Travel City : {{ details?.travelcity }}
                             <br> From Location : {{ details?.fromlocation }}
-                            <br> Travel Start Date : {{ details?.startdate }}
-                            <br> Travel End Date : {{ details?.enddate }}
+                            <br> Travel Start Date : {{ details?.startdate | date:'mediumDate'}}
+                            <br> Travel End Date : {{ details?.enddate | date:'mediumDate'}}
                             <br> Project Name : {{ details?.projectname }}
                             <br> Passport Number : {{ details?.passport }}
                             <br> Expense Borne : {{ details?.expenseborne }}

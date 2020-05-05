@@ -7,7 +7,7 @@ export interface UserRegister {
     email:string;
     telephone:string;
     businessUnitId:{
-        id:bigint;
+        id:number;
     
     };
     address:address;
