@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path :'dashboard',component:DashboardComponent ,canActivate: [AuthGuardService] },
   { path : 'new',component:AddNewTicketComponent ,canActivate: [AuthGuardService]},
-  { path : 'details', component : TicketDetailsComponent ,canActivate: [AuthGuardService]},
+  { path : 'details/:id', component : TicketDetailsComponent ,canActivate: [AuthGuardService]},
   { path : 'ticketconfirm/:details', component : TicketconfirmComponent ,canActivate: [AuthGuardService]},
   { path : 'editTicket/:details', component : EditTicketComponent ,canActivate: [AuthGuardService]},
  

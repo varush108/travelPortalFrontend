@@ -47,4 +47,8 @@ export class UserService {
   saveTicketDetails(ticket){
     return this.http.post(`http://localhost:8081/travelApi/v1/ticketDetails`,ticket,{observe: 'response'});
   }
+
+  uploadAttachements(formData){
+    return this.http.post(`http://localhost:8081/travelApi/v1/uploadFile`,formData);
+  }
 }

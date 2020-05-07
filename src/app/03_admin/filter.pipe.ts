@@ -39,19 +39,22 @@ export class FilterPipe implements PipeTransform {
         return it.ticketDetails[0].details?.priority.toLowerCase().includes(searchText);
       });
     }
-    else if (keyword === 'project') {
+    else if (keyword === 'project'  && searchText) {
       return this.t.filter(it => {
         return it.ticketDetails[0].details.projectname.toLowerCase().match(searchText);
       });
     }
-    else if (keyword === 'approver') {
+    else if (keyword === 'approver'  && searchText) {
       return this.t.filter(it => {
         return it.ticketDetails[0].details.approver.toLowerCase().match(searchText);
       });
-    } else if (keyword === 'tolocation') {
+    } else if (keyword === 'tolocation'  && searchText) {
       return this.t.filter(it => {
         return it.ticketDetails[0].details.travelcity.toLowerCase().match(searchText);
       });
+    }
+    else{
+      return this.t;
     }
   }
 }

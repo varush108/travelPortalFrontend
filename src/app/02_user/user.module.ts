@@ -46,4 +46,6 @@ import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
     UserService
   ]
 })
-export class UserModule { }
+export class UserModule { 
+  
+}

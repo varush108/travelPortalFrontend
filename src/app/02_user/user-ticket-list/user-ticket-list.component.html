@@ -23,15 +23,15 @@
 
             <!-- MAIN -->
             <div class="col">
-                <div class="card border-dark text-center mx-auto my-3 shadow " *ngFor="let ticket of Tickets | paginate: { itemsPerPage: 5, currentPage: p }" (click)="getDetails(ticket.id)">
+                <div class="card border-dark text-center mx-auto my-3 shadow " *ngFor="let ticket of Tickets | paginate: { itemsPerPage: 2, currentPage: p }" (click)="getDetails(ticket.id)">
                     <div class="card-body">
                         <div class="card-title">
                             <h3>{{ ticket.type.name }}</h3>
                         </div>
                         <div class="d-flex mt-3 justify-content-center">
-                            <h5><span class="badge badge-danger p-3 mr-4">Priority - {{ ticket.ticketDetails[ ticket.ticketDetails.length-1]?.details.priority }}</span></h5>
-                            <h5><span class="badge badge-info p-3 mr-4">Status - {{ ticket.ticketDetails[ticket.ticketDetails.length-1]?.details.status }}</span></h5>
-                            <h5><span class="badge badge-dark p-3 mr-4">Submission Date - {{ ticket.created_on | date:'mediumDate'}}</span></h5>
+                            <h5><span class="badge badge-danger p-3 mr-4">Priority - {{ ticket.ticketDetails[0]?.details.priority }}</span></h5>
+                            <h5><span class="badge badge-info p-3 mr-4">Status - {{ ticket.ticketDetails[0]?.details.status }}</span></h5>
+                            <h5><span class="badge badge-dark p-3 mr-4">Submission Date - {{ ticket.created_on | date}}</span></h5>
                         </div>
                     </div>
                 </div>
