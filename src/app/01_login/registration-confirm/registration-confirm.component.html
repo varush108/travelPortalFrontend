@@ -18,7 +18,6 @@
                 <hr>
                 <p class="card-text mt-3" style="text-align: justify">
                     <b>Name </b>:{{ user.firstName + " "+ user.lastName}}
-                    <br> <b>Buisness Unit</b> : {{ user.businessUnitId}}
                     <br> <b>Title</b> :{{ user.title }}
                     <br> <b>E-mail</b> : {{user.email}}
                     <br> <b>Telephone </b>: {{ user.telephone}}
@@ -32,7 +31,7 @@
                 </p>
             </div>
             <button class="btn mr-1" style="color: aliceblue;" (click)="print()"><i class="fa fa-print icon"></i>PRINT</button>
-            <button class="btn mr-1" style="color: aliceblue;"><i class="fa fa-pencil icon"></i>EDIT</button>
+            <button class="btn mr-1" style="color: aliceblue;" routerLink="/editUser"><i class="fa fa-pencil"></i>EDIT</button>
             <a class="btn" href="" role="button" style="color: aliceblue;"><i class="fa fa-arrow-left icon"></i> Login
                 Page</a>
         </div>

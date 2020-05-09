@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.compone
 import { LoginService } from './services/login.service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationConfirmComponent } from './registration-confirm/registration-confirm.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { RegistrationConfirmComponent } from './registration-confirm/registratio
     SignupComponent,
     SigninComponent,
     ForgotPasswordComponent,
-    RegistrationConfirmComponent
+    RegistrationConfirmComponent,
+    EditUserComponent
   ],
   providers:[
     LoginService,

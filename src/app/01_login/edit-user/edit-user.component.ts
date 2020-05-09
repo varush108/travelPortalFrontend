@@ -7,15 +7,17 @@ import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class SignupComponent implements OnInit {
+export class EditUserComponent implements OnInit {
+
  
   constructor(private loginService : LoginService,
     private datePipe: DatePipe,
-    private router: Router) { }
+    private router: Router,
+    ) {  }
 
   businessUnits:BusinessUnit[];
   regForm : FormGroup;
@@ -31,6 +33,7 @@ export class SignupComponent implements OnInit {
 
   errorMessge:string;
   
+  idControl:FormControl;
   firstNameControl:FormControl;
   lastNameControl:FormControl;
   businessUnitControl:FormControl;
@@ -47,29 +50,48 @@ export class SignupComponent implements OnInit {
 
  
 
-  ngOnInit() {
-    this.getCountries();
-
+ ngOnInit() {
+   
+     this.getCountries();
+    console.log(this.countryInfo);
     this.loginService.getAllBusinessUnits().subscribe((businessUnits: BusinessUnit[]) => {
       this.businessUnits = businessUnits;
     });
 
-    this.firstNameControl=new FormControl('', [Validators.required]);
-    this.lastNameControl=new FormControl('', [Validators.required]);
-    this.emailControl=new FormControl('', [Validators.required,Validators.email]);
-    this.titleControl=new FormControl('', [Validators.required]);
-    this.businessUnitControl=new FormControl('', [Validators.required]);
-    this.phoneControl=new FormControl('', [Validators.required,Validators.maxLength(15)]);
-    this.address1Control=new FormControl('', [Validators.required]); 
-    this.address2Control=new FormControl('');
-    this.countryControl=new FormControl('', [Validators.required]);
-    this.stateControl=new FormControl('', [Validators.required]);
-    this.cityControl=new FormControl('', [Validators.required]);
-    this.zipcodeControl=new FormControl('', [Validators.required]);
+
+    this.user = {
+      id : this.loginService.signUpUser.id,
+      businessUnitId :this.loginService.signUpUser.businessUnitId,
+      firstName : this.loginService.signUpUser.firstName,
+      lastName:this.loginService.signUpUser.lastName,
+      address : this.loginService.signUpUser.address,
+      email : this.loginService.signUpUser.email,
+      telephone : this.loginService.signUpUser.telephone,
+      title : this.loginService.signUpUser.title,
+      created_on :this.loginService.signUpUser.created_on
+
+    }
+
+    console.log(this.user);
+    
+    this.idControl=new FormControl(this.user.id);
+    this.firstNameControl=new FormControl(this.user.firstName, [Validators.required]);
+    this.lastNameControl=new FormControl(this.user.lastName, [Validators.required]);
+    this.emailControl=new FormControl(this.user.email, [Validators.required,Validators.email]);
+    this.titleControl=new FormControl(this.user.title, [Validators.required]);
+    this.businessUnitControl=new FormControl(this.user.businessUnitId.id, [Validators.required]);
+    this.phoneControl=new FormControl(this.user.telephone, [Validators.required,Validators.maxLength(15)]);
+    this.address1Control=new FormControl(this.user.address.address1, [Validators.required]); 
+    this.address2Control=new FormControl(this.user.address.address2);
+    this.countryControl=new FormControl(this.user.address.country, [Validators.required]);
+    this.stateControl=new FormControl(this.stateInfo.indexOf(this.user.address.state), [Validators.required]);
+    this.cityControl=new FormControl(this.cityInfo.indexOf(this.user.address.city), [Validators.required]);
+    this.zipcodeControl=new FormControl(this.user.address.zipcode, [Validators.required]);
 
     //initialize form group
 
     this.regForm= new FormGroup({
+      id: this.idControl,
       firstName : this.firstNameControl,
       lastName : this.lastNameControl,
       email : this.emailControl,
@@ -107,16 +129,10 @@ export class SignupComponent implements OnInit {
       this.user.address.country = this.countryInfo[this.regForm.get('address').get('country').value]['CountryName'];
       this.user.address.state = this.stateInfo[this.regForm.get('address').get('state').value]['StateName'];
       this.user.address.city = this.cityInfo[this.regForm.get('address').get('city').value];
-      this.user.businessUnitId = {
-        id: this.regForm.get('businessUnit').value
-      };
-     this.loginService.registerUser(this.user).subscribe((response) =>{
+      console.log(this.user);
+     this.loginService.updateUser(this.user).subscribe((response) =>{
        if(response.status == 200){
-       this.user.id = response.body['id'];
-       this.loginService.signUpUser = this.user;
-        this.loginService.sendConformationMail(this.user.email,response.body['password']).subscribe((responseData)=>{
-          
-        })
+        this.loginService.signUpUser = this.user;
         this.router.navigate(['/registrationConfirm']);
        } 
        else if(response.status==500){ 
@@ -140,17 +156,17 @@ export class SignupComponent implements OnInit {
     subscribe(
       data2 => {
         this.countryInfo=data2.Countries;
+     
         //console.log('Data:', this.countryInfo);
       },
-      err => console.log(err),
-      () => console.log('complete')
+      err => console.log(err)
     )
   }
 
   onChangeCountry(countryValue) {
     this.stateInfo=this.countryInfo[countryValue].States;
     this.cityInfo=this.stateInfo[0].Cities;
-    console.log(this.cityInfo);
+   
   }
 
   onChangeState(stateValue) {
@@ -161,3 +177,5 @@ export class SignupComponent implements OnInit {
 
 
 }
+
+

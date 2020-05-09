@@ -9,6 +9,19 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class LoginService {
 
+
+  
+
+  private _signUpUser : UserRegister;
+
+  get signUpUser(){
+    return this._signUpUser;
+  }
+
+  set signUpUser(user:UserRegister){
+    this._signUpUser=user;
+  }
+
   url :string = "https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json";
 
   constructor(private http:HttpClient) { }
@@ -33,6 +46,11 @@ export class LoginService {
   registerUser(user : UserRegister){
 
     return this.http.post('http://localhost:8081/travelApi/v1/users',user,{observe: 'response'})
+
+  }
+  updateUser(user : UserRegister){
+
+    return this.http.put(`http://localhost:8081/travelApi/v1/user/${user.id}`,user,{observe: 'response'})
 
   }
 
