@@ -8,7 +8,7 @@ import { NavbarModule } from '../02_user/navbar/navbar.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './filter.pipe';
 import { SortByPipe } from './sortby.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     AdminRoutingModule,
     NavbarModule,
     NgxPaginationModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   exports: [
     AdminComponent,

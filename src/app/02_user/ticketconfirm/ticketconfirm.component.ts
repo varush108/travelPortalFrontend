@@ -33,9 +33,7 @@ export class TicketconfirmComponent implements OnInit {
 
     this.getCountries();
 
-    this.routeActivate.params.subscribe(params => {
-      this.ticket= JSON.parse(params['details']);
-    });
+    this.ticket =  this.userService.selectedTicket;
     console.log(this.ticket);
     this.details=this.ticket.details;
     this.userService.getTicketTypeById(this.ticket.type.id).subscribe((response)=>{
@@ -44,7 +42,7 @@ export class TicketconfirmComponent implements OnInit {
   }
  
   onEdit(){
-    this.router.navigate(['/editTicket',JSON.stringify(this.ticket)])
+    this.router.navigate(['/editTicket'])
   }
 
   getCountries(){

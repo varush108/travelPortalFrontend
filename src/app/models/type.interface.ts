@@ -1,6 +1,6 @@
 
 export interface type{
-    id:BigInteger;
+    id:BigInteger | number;
     name:string;
     templateId:string;
 }

@@ -15,6 +15,7 @@ import { TicketDetailsComponent } from './ticket-details/ticket-details.componen
 import { TicketconfirmComponent } from './ticketconfirm/ticketconfirm.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
+import { SortByPipe } from './sortby.pipe';
 
 
 
@@ -39,8 +40,8 @@ import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
     DashboardComponent,
     TicketDetailsComponent,
     TicketconfirmComponent,
-    EditTicketComponent
-      
+    EditTicketComponent,
+    SortByPipe
   ],
   providers:[
     UserService

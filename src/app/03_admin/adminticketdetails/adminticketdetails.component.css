@@ -2,11 +2,15 @@
     background : linear-gradient(to top, rgb(104, 106, 117) 0% , rgb(250, 250, 250) 100%);
     background-size: 1500px 700px;
 }*/
+body {
+    background : linear-gradient(to bottom, rgb(238, 219, 227) 0%, rgba(182, 177, 180, 0.788) 100%);
+    padding-bottom : 88px;
+}
 .custom-file-label {
     font-size: 16px;
 }
 #card-button {
-    background : linear-gradient(to right,rgb(150, 2, 150) 0%, rgb(53, 3, 53) 100%);
+    background: linear-gradient(to top, rgb(141, 39, 102) 0%, rgb(100, 3, 92) 100%);
     border: none;
     color: white;
     font-weight: 600;
@@ -14,10 +18,10 @@
     text-align: center;
     display: inline-block;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 h2 {
-    color: rgb(218, 68, 68);
-    text-shadow: 1px 1px 2px #6b3d3d;
+    color: rgb(73, 56, 54);
+    text-shadow: 1px 1px 2px #696060;
 }

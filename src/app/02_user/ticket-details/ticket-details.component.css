@@ -1,23 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
+body {
+    background : linear-gradient(to bottom, rgb(238, 219, 227) 0%, rgba(182, 177, 180, 0.788) 100%);
+    padding-bottom : 180px;
+}
 
     h3 {
-        color: orangered;
+        color: rgb(27, 22, 22);
     }
  
-.card-title {
-    color : rgb(197, 59, 9);
-}
 .icon {
     padding: 0px;
     color: white;
     min-width: 20px;
 }
-h6 {
-    color : purple;
-}
 #card-button {
-    background : linear-gradient(to right,rgb(150, 2, 150) 0%, rgb(53, 3, 53) 100%);
+    background: linear-gradient(to top, rgb(141, 39, 102) 0%, rgb(100, 3, 92) 100%);
     border: none;
     color: white;
     font-weight: 600;
@@ -25,7 +22,18 @@ h6 {
     text-align: center;
     display: inline-block;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 20px;
+}
+#card-button2 {
+    background: linear-gradient(to top, rgb(141, 39, 102) 0%, rgb(100, 3, 92) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 20px;
 }
 
 

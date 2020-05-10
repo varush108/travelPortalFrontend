@@ -1,12 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CoronaDetails } from 'src/app/models/coronaDetails';
 import { Countries } from 'src/app/models/countries';
 
 @Injectable()
 export class UserService {
+  private _selectedTicket: any;
 
   constructor(private http: HttpClient) {}
+
+
+  set selectedTicket(ticket: any) {
+    this._selectedTicket = ticket;
+  }
+
+  get selectedTicket() {
+    return this._selectedTicket;
+  }
 
   getTickets() {
     return this.http.get(`http://localhost:8081/travelApi/v1/tickets`);
@@ -48,7 +58,13 @@ export class UserService {
     return this.http.post(`http://localhost:8081/travelApi/v1/ticketDetails`,ticket,{observe: 'response'});
   }
 
-  uploadAttachements(formData){
-    return this.http.post(`http://localhost:8081/travelApi/v1/uploadFile`,formData);
+  uploadAttachements(file:File){
+  
+  
+
+    let formData = new FormData();
+    formData.append("file",file,file.name)
+   
+    return this.http.post('http://localhost:8081/travelApi/v1/uploadFile',formData);
   }
 }

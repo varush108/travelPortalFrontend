@@ -82,7 +82,7 @@ export class AddNewTicketComponent {
       passport : this.passportControl,
       approver : this.approverControl,
       projectname : this.projectnameControl,
-      details : this.detailsControl,
+      adddetail : this.detailsControl,
       upperbound : this.upperboundControl,
       expenseborne : this.expenseborneControl
     })
@@ -126,7 +126,8 @@ export class AddNewTicketComponent {
         response.body['id']
 
         this.sessionService.updateSessionUserDetails();
-        this.router.navigate(['/ticketconfirm',JSON.stringify(ticket1)])
+        this.service.selectedTicket = ticket1
+        this.router.navigate(['/ticketconfirm'])
         
        }else{
          alert('server error occured');

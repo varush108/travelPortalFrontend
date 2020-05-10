@@ -2,7 +2,7 @@ import { ticketDetails } from './ticketDetails.interface';
 import { details } from './details.interface';
 
 export interface NewTicket {
-        id:BigInteger,
+        id:number,
         type:{
           id:number,
           name:string

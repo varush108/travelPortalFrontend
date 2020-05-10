@@ -33,7 +33,8 @@ export class EditTicketComponent implements OnInit {
     private service :UserService,
     private router: Router,
     private routeActivate : ActivatedRoute,
-    private loginService:LoginService,) { }
+    private loginService:LoginService,
+   ) { }
   
   typeControl:FormControl;
   priorityControl:FormControl;
@@ -59,9 +60,7 @@ export class EditTicketComponent implements OnInit {
 
 
 
-    this.routeActivate.params.subscribe(params => {
-      this.ticket = JSON.parse(params['details']);
-    });
+   this.ticket = this.service.selectedTicket;
 
     this.details=this.ticket.details;
 
@@ -95,7 +94,7 @@ export class EditTicketComponent implements OnInit {
       passport : this.passportControl,
       approver : this.approverControl,
       projectname : this.projectnameControl,
-      details : this.detailsControl,
+      adddetail : this.detailsControl,
       upperbound : this.upperboundControl,
       expenseborne : this.expenseborneControl
     })
@@ -154,8 +153,8 @@ export class EditTicketComponent implements OnInit {
     )
   }
 
-  signOut() {
-    this.router.navigateByUrl('/signin');
+  cancel(){
+    this.router.navigate(['/details',this.ticket.id]);
   }
 }
 
