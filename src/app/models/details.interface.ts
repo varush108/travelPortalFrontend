@@ -5,7 +5,7 @@ export enum Priority {
 }
 export interface details{
 
-    status : string;
+    status : String;
     priority : string;
     approver : string;
     fromlocation : string;

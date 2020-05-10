@@ -7,7 +7,7 @@ export interface ticketDetails{
     comments?:string;
     attachements?:string[];
     user:string | {
-        id:BigInteger
+        id:BigInteger 
     };
     ticket?:{
         id:BigInteger |number

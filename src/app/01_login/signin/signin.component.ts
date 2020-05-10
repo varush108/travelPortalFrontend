@@ -77,7 +77,7 @@ export class SigninComponent {
         if(this.password===user.user_id.password)
         {
           
-          localStorage.setItem("user",JSON.stringify(user.user_id));
+          localStorage.setItem("admin",JSON.stringify(user.user_id));
 
           this.errorMessage="";
           this.router.navigateByUrl('/ticketlist');

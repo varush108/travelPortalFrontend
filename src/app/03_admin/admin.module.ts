@@ -32,7 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FilterPipe,
     SortByPipe
   ],
-  providers: [
+  providers: [ 
   ]
 })
 export class AdminModule { }

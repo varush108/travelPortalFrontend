@@ -18,7 +18,7 @@
 
 <body>
     <app-nav></app-nav>
-    <main role="main" class="col-md-15 col-lg-12 pt-3 px-4">
+    <main *ngIf="canRender" role="main" class="col-md-15 col-lg-12 pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom border-dark" style="border-bottom-color:purple">
             <h1 class="heading">Ticket List</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
@@ -39,11 +39,12 @@
             <option value="date">Date</option>
           </select>
                 </div>
-                <button class="btn btn-sm btn-outline-dark">View resolved tickets</button>
+                <button *ngIf="!done" class="btn btn-sm btn-outline-dark" (click)="onViewResolved()">View resolved tickets</button>
+                <button *ngIf="done" class="btn btn-sm btn-outline-dark" (click)="onViewAll()">View UnResolved tickets</button>
             </div>
         </div>
 
-        <div class="card border-dark text-center mx-auto mb-3 shadow" *ngFor="let t of Tickets | filter : filter.value | sortBy : 'desc' : sort.value | paginate: { itemsPerPage: 5, currentPage: p }" style="max-width: 60rem;" (click)="getDetails(t.id)">
+        <div class="card border-dark text-center mx-auto mb-3 shadow" *ngFor="let t of Tickets | filter : filter.value : filterby.value  | sortBy : 'desc' : sort.value | paginate: { itemsPerPage: 5, currentPage: p }" style="max-width: 60rem;" (click)="getDetails(t.id)">
             <div class="card-body">
                 <div class="card-title">
                     <h3>{{ t.type.name }}</h3>

@@ -57,9 +57,10 @@ export class TicketDetailsComponent implements OnInit {
   onEdit(){
     console.log(this.editTicket);
     this.editTicket.details = this.Ticket.ticketDetails[0].details
+    this.editTicket.details = this.Ticket.ticketDetails[0].details
     this.userservice.selectedTicket = this.editTicket;
-    if(this.userservice.selectedTicket.details.status=="Done" || this.userservice.selectedTicket.details.status=="In process"){
-      alert("You cannot edit this ticket");
+    if(this.userservice.selectedTicket.details.status.toLowerCase()=="done" || this.userservice.selectedTicket.details.status=="In process"){
+      alert("This ticket has been marked as "+this.userservice.selectedTicket.details.status+"<br>You cannot edit this ticket");
     } else {
     this.router.navigate(['/editTicket'])
     }
@@ -68,7 +69,9 @@ export class TicketDetailsComponent implements OnInit {
   sortDetails(detail : ticketDetails[]) {
     return orderBy(detail, 'id' , 'desc');
   }
-
+  getFileName(uri:string){
+    return decodeURIComponent(uri.split('/').pop())
+  }
   backToHome() {
     this.router.navigateByUrl("/mytickets");
   }

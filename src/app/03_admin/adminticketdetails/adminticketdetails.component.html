@@ -33,6 +33,10 @@
                     <th scope="col">Travel Duration</th>
                     <th scope="col">Expected Amount</th>
                     <th scope="col">Details</th>
+                    <th scope="col">Comments</th>
+                    <th scope="col">Attachements</th>
+
+
                     <th scope="col">Modified on</th>
                     <th scope="col">Modified By</th>
                 </tr>
@@ -53,6 +57,10 @@
                     <td>{{ ticket.details.duration }}</td>
                     <td>{{ ticket.details.upperbound }}</td>
                     <td>{{ ticket.details.adddetail }}</td>
+                    <td>{{ticket.comments}}</td>
+                    <td>
+                        <a *ngIf="ticket.attachements.length!=0" href="{{ticket?.attachements[0]}}"><span class="fa fa-files-o">{{getFileName(ticket?.attachements[0])}}</span></a>
+                    </td>
                     <td>{{ ticket.modified_on | date }}</td>
                     <td>{{ ticket.user }}</td>
 
@@ -60,19 +68,23 @@
             </tbody>
         </table>
     </div>
-    <form [formGroup]="regForm" validate (ngSubmit)="onFormSubmit()" enctype="multipart/form-data">
+    <form [formGroup]="regForm" validate (ngSubmit)="onFormSubmit()">
         <div class="d-flex justify-content-center mt-4 form-group">
-            <textarea class="form-control col-md-3 mr-2 rounded" style="width:430px;" id="comments" rows="3" placeholder="Comments..."></textarea>
-            <input type="file" class="form-control col-md-2 mr-2 rounded" id="attachment" placeholder="Attachment" style="width:230px;" formControlName="file" (change)="onChangeFile($event.target.files)" [ngClass]="getControlValidationClasses(attachmentControl)">
-            <input type="text" class="form-control col-md-2 mr-2 rounded" id="status" placeholder="Status" style="width:230px;">
-        </div>
+            <textarea class="form-control col-md-3 mr-2 rounded" style="width:430px;" id="comments" rows="3" placeholder="Comments..." formControlName="comments" [ngClass]="getControlValidationClasses(commentsControl)"></textarea>
+            <input type="file" class="form-control-file col-md-2 mr-2 rounded" id="attachment" style="width:230px;" formControlName="file" (change)="onChangeFile($event.target.files)" [ngClass]="getControlValidationClasses(attachmentControl)">
+            <select class="form-control col-md-2 mr-2 rounded" formControlName="status" [ngClass]="getControlValidationClasses(statusControl)">
+              <option value="In Process">In Process</option>
+              <option value="Done">Done</option>
+              <option value="Re Submitted"> Re Submitted</option>
+            </select>
 
-        <div class="d-flex justify-content-center mt-3">
-            <button class="btn mr-3" id="card-button">Submit</button>
-
-            <button class="btn" id="card-button" (click)="backToHome()"><i class="fa fa-arrow-left icon"></i> Home page</button>
         </div>
     </form>
+    <div class="d-flex justify-content-center mt-3">
+        <button class="btn mr-3" id="card-button" (click)="onFormSubmit()">Submit</button>
+
+        <button class="btn" id="card-button" (click)="backToHome()"><i class="fa fa-arrow-left icon"></i> Home page</button>
+    </div>
 </body>
 
 </html>
